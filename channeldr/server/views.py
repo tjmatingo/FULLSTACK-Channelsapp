@@ -12,10 +12,15 @@ class ServerListViewSet(viewsets.ViewSet):
     def list(self, request):
         # Sample data representing servers
         category = request.query_params.get('category')
+        qty = request.query_params.get('qty') # default to 10 if not provided
+        
         if category:
             # convert to JSON so it can be sent over to the frontend
             # done using a serializer
             self.queryset = self.queryset.filter(category__name=category) #updating queryset to filter by category name
+            
+        if qty:
+            self.queryset = self.queryset[:int(qty)] # updating queryset to limit the number of results
 
         serializer = ServerSerializer(self.queryset, many=True)
         return Response(serializer.data)
