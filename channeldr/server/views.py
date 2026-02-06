@@ -1,7 +1,8 @@
-from django.shortcuts import render
+
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
+from django.db.models import Count
 
 from .models import Server
 from .serializer import ServerSerializer
@@ -16,6 +17,8 @@ class ServerListViewSet(viewsets.ViewSet):
         qty = request.query_params.get('qty') # default to 10 if not provided
         by_user = request.query_params.get('by_user') == "true" 
         by_serverID = request.query_params.get('by_serverID')
+        with_numMembers = request.query_params.get("with_numMembers") == "true"
+        
         '''
         order of if statements is the order of appearents in search bar
         '''
@@ -33,7 +36,8 @@ class ServerListViewSet(viewsets.ViewSet):
             user_id = request.user.id
             self.queryset = self.queryset.filter(member=user_id) # updating queryset to filter by user ID
 
-        
+        if with_numMembers:
+            self.queryset = self.queryset.annotate(num_members=Count("member")) # filter and return number of members 
 
         if qty:
             self.queryset = self.queryset[:int(qty)] # updating queryset to limit the number of results
@@ -47,7 +51,8 @@ class ServerListViewSet(viewsets.ViewSet):
             except ValueError: 
                 raise ValidationError(detail=f"Server ValueError")
 
-        serializer = ServerSerializer(self.queryset, many=True)
+        # passing the above filters to the serializer   
+        serializer = ServerSerializer(self.queryset, many=True, context={"num_members":with_numMembers})
         return Response(serializer.data)
 
     
