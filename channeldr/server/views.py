@@ -20,6 +20,7 @@ class ServerListViewSet(viewsets.ViewSet):
         order of if statements is the order of appearents in search bar
         '''
 
+        # must be logged in
         if by_user or by_serverID and not request.user.is_authenticated:
             raise AuthenticationFailed()
         
