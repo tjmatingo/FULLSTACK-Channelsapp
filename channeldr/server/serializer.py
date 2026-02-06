@@ -15,6 +15,7 @@ class ServerSerializer(serializers.ModelSerializer):
     num_members = serializers.SerializerMethodField()
     channel_server = ChannelSerializer(many=True)
     
+    # selecting server db table and excluding the member field
     class Meta:
         model = Server
         exclude = ("member",)
@@ -28,7 +29,6 @@ class ServerSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         '''
-        Docstring for to_representation
          removes the num members attribure if there us no members
         '''
         data = super().to_representation(instance)
@@ -39,6 +39,7 @@ class ServerSerializer(serializers.ModelSerializer):
         return data
 
 class CategorySerializer(serializers.ModelSerializer):
+    # selecting the category db table with all the fields
     class Meta:
         model = Category
         fields = '__all__'
