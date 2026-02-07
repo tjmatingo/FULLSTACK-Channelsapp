@@ -1,12 +1,38 @@
 from django.db import models
 from django.conf import settings 
+from django.shortcuts import get_object_or_404
+from django.dispatch import receiver
+
+def categoryIconUploadPath(instance, filename):
+    return f"category/{instance.id}/category_icon/{filename}"
 
 # Create your models here.
 class Category(models.Model):
     '''Model representing a Server category.'''
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
+    # SVG
+    icon = models.FileField(null=True, blank=True, upload_to=categoryIconUploadPath)
     
+    def save(self, *args, **kwargs):
+        if self.id:
+            existing = get_object_or_404(Category, id=self.id)
+
+            # if icon is changed the old one must be deleted
+            if existing.icon != self.icon:
+                existing.icon.delete(save=False)
+        super(Category, self).save(*args, **kwargs)
+    
+    # if category is deleted icon must be deleted as well
+    @receiver(models.signals.pre_delete, sender="server.Category")
+    def category_delete_files(sender, instance, **kwargs):        
+        for field in instance._meta.fields:
+            if field.name == "icon":
+                file = getattr(instance, field.name)
+                if file:
+                    file.delete(save=False)
+
+
     def __str__(self):
         return self.name
     
