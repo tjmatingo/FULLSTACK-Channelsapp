@@ -1,5 +1,6 @@
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import {useTheme} from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const PrimaryAppBar = () => {
     const theme = useTheme();
@@ -14,12 +15,20 @@ const PrimaryAppBar = () => {
             <Toolbar variant="dense" sx={{ 
                 height: theme.primaryAppBar.height,
                 minHeight: theme.primaryAppBar.height,
-                 }}
-                 >
-                Channel-IO
+                }}
+            >
+
+                <Link href="/" underline="none" color="inherit">
+                    <Typography variant="h6"
+                        noWrap
+                        component="div"
+                        sx={{ display: {fontWeight: 700, letterSpacing: "-0.5px"} }}>
+                            Channel IO
+                    </Typography>
+                </Link>
             </Toolbar>
         </AppBar>
-    )
+    );
 };
 
 
