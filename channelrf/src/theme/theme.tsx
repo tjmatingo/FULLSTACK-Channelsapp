@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
     interface Theme {
@@ -18,6 +18,20 @@ export const createMuiTheme = () => {
     let theme = createTheme({
         primaryAppBar: {
             height: 50,
+        },
+        components:{
+            MuiAppBar: {
+                defaultProps: {
+                    elevation: 0,
+                },
+                styleOverrides: {
+                    root: {
+                    backgroundColor: "#fff",
+                    color: "#000",
+                    boxShadow: "none",
+                    },
+                },
+            },
         },
     });
     return theme;
