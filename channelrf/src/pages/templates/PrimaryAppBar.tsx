@@ -9,7 +9,10 @@ const PrimaryAppBar = () => {
 
     
     return (
-        <AppBar>
+        <AppBar sx={{
+            backgroundColor: theme.palette.background.default,
+            borderBottom: `1px solid ${theme.palette.divider}`,
+            }}>
 
             <Toolbar variant="dense" sx={{ 
                 height: theme.primaryAppBar.height,
