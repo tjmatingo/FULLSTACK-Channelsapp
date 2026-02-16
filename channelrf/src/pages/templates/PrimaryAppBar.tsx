@@ -9,6 +9,7 @@ const PrimaryAppBar = () => {
     
     return (
         <AppBar sx={{
+            zIndex: (theme) => theme.zIndex.drawer + 2,
             backgroundColor: theme.palette.background.default,
             borderBottom: `1px solid ${theme.palette.divider}`,
             }}>
