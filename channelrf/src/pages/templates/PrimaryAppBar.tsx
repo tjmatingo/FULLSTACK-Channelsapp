@@ -1,10 +1,17 @@
-import { AppBar, Toolbar, Typography, Link, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Drawer, Typography, Link, Box, IconButton } from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import MenuIcon from '@mui/icons-material/Menu';
+import {useState} from 'react';
 
 
 const PrimaryAppBar = () => {
     const theme = useTheme();
+
+    const [sideMenu, setSideMenu] = useState(false);
+    // function to toggle drawer
+    const toggleDrawer = (open: boolean) => (event: React.MouseEvent) => {
+        setSideMenu(open);
+    };
 
     
     return (
@@ -20,10 +27,19 @@ const PrimaryAppBar = () => {
                 }}>
 
                 <Box sx={{ display: {xs: "block", sm: "none"} }} >
-                    <IconButton color="inherit" aria-label="open drawer" edge="start" sx={{mr:2}} >
+                    <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={toggleDrawer(true)} sx={{mr:2}} >
                         <MenuIcon />
                     </IconButton>
                 </Box>
+
+                <Drawer anchor="left" open={sideMenu}>
+                    {[...Array(100)].map((_, i) => (
+                        <Typography key={i} paragraph>
+                            {i + 1}
+                        </Typography>
+                    ))}
+
+                </Drawer>
 
                 <Link href="/" underline="none" color="inherit">
                     <Typography variant="h3"
