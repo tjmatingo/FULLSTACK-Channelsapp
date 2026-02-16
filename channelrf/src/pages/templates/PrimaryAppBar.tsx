@@ -46,7 +46,7 @@ const PrimaryAppBar = () => {
                         noWrap
                         component="div"
                         sx={{ fontWeight: 400, letterSpacing: "-0.5px" }}>
-                            CHANNEL IO
+                            CHANNEL-IO
                     </Typography>
                 </Link>
             </Toolbar>
