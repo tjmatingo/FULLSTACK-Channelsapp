@@ -1,7 +1,7 @@
-import { AppBar, Toolbar, Drawer, Typography, Link, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Drawer, Typography, Link, Box, IconButton, useMediaQuery } from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import MenuIcon from '@mui/icons-material/Menu';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 const PrimaryAppBar = () => {
@@ -11,7 +11,7 @@ const PrimaryAppBar = () => {
     // function to toggle drawer
     const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
-            event.type == "keydown" &&
+            event.type === "keydown" &&
             ((event as React.KeyboardEvent).key === "Tab" ||
                 (event as React.KeyboardEvent).key === "Shift")
             ) {
@@ -21,6 +21,14 @@ const PrimaryAppBar = () => {
         setSideMenu(open);
     };
 
+
+    const isSmallScreen = useMediaQuery(theme.breakpoints.up("sm"));
+    
+    useEffect(() => {
+        if (isSmallScreen && sideMenu) {
+            setSideMenu(false);
+        }
+    }, [isSmallScreen]);
     
     return (
         <AppBar sx={{
