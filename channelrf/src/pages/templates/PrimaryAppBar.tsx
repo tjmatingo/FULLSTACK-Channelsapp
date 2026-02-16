@@ -32,7 +32,7 @@ const PrimaryAppBar = () => {
                     </IconButton>
                 </Box>
 
-                <Drawer anchor="left" open={sideMenu}>
+                <Drawer anchor="left" open={sideMenu} onClose={toggleDrawer(false)}>
                     {[...Array(100)].map((_, i) => (
                         <Typography key={i} paragraph>
                             {i + 1}
