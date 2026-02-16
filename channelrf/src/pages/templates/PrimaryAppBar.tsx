@@ -9,7 +9,15 @@ const PrimaryAppBar = () => {
 
     const [sideMenu, setSideMenu] = useState(false);
     // function to toggle drawer
-    const toggleDrawer = (open: boolean) => (event: React.MouseEvent) => {
+    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (
+            event.type == "keydown" &&
+            ((event as React.KeyboardEvent).key === "Tab" ||
+                (event as React.KeyboardEvent).key === "Shift")
+            ) {
+                return;
+            }
+
         setSideMenu(open);
     };
 
