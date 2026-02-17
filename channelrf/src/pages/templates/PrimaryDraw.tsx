@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material/styles";
 const PrimaryDraw = () => {
     const [open, setOpen] = useState(true);
     const theme = useTheme();
-    const below600 = useMediaQuery("(max-width:599px";)
+    const below600 = useMediaQuery("(max-width:599px");
     
 
 
