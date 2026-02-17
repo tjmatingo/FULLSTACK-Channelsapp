@@ -16,7 +16,7 @@ const PrimaryDraw = () => {
     }, [below600]);
     
     return(
-        <Drawer open={open}>
+        <Drawer open={open} variant={below600 ? "temporary" : "permanent"}>
             <Box>
                 <Box>
                     {[...Array(100)].map((_, i) => (
