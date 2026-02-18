@@ -8,15 +8,16 @@ const PrimaryDraw = () => {
     const theme = useTheme();
     const below600 = useMediaQuery("(max-width:599px");
     
-
-
     useEffect(() => {
         setOpen(!below600);
 
     }, [below600]);
     
     return(
-        <Drawer open={open} variant={below600 ? "temporary" : "permanent"}>
+        <Drawer open={open} variant={below600 ? "temporary" : "permanent"} 
+        PaperProps={{
+            sx:{mt:theme.primaryAppBar.height},
+        }}>
             <Box>
                 <Box>
                     {[...Array(100)].map((_, i) => (
