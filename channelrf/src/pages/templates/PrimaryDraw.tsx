@@ -1,18 +1,28 @@
 import { Box, Drawer, useMediaQuery,Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
-
+import DrawToggle from "../../components/PrimaryDraw/DrawToggle";
 
 const PrimaryDraw = () => {
     const [open, setOpen] = useState(true);
     const theme = useTheme();
     const below600 = useMediaQuery("(max-width:599px");
     
+    
     useEffect(() => {
         setOpen(!below600);
 
     }, [below600]);
     
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+    
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
     return(
         <Drawer open={open} variant={below600 ? "temporary" : "permanent"} 
         PaperProps={{
@@ -23,7 +33,9 @@ const PrimaryDraw = () => {
         },
         }}>
             <Box>
-                <Box>
+                <Box sx={{position: "absolute", top: 0, right: 0, p: 0, width: open ? "auto" : "100%"}}>
+                    <DrawToggle />
+                    
                     {[...Array(100)].map((_, i) => (
                         <Typography key={i} paragraph>
                             {i + 1}
