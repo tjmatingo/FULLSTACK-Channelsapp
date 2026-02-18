@@ -16,7 +16,10 @@ const PrimaryDraw = () => {
     return(
         <Drawer open={open} variant={below600 ? "temporary" : "permanent"} 
         PaperProps={{
-            sx:{mt:theme.primaryAppBar.height},
+            sx: {
+                mt: `${theme.primaryAppBar.height}px`,
+                height: `calc(100vh - ${theme.primaryAppBar.height} )`,
+        },
         }}>
             <Box>
                 <Box>
