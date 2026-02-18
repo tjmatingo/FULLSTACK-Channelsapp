@@ -18,7 +18,8 @@ const PrimaryDraw = () => {
         PaperProps={{
             sx: {
                 mt: `${theme.primaryAppBar.height}px`,
-                height: `calc(100vh - ${theme.primaryAppBar.height} )`,
+                height: `calc(100vh - ${theme.primaryAppBar.height}px )`,
+                width: theme.primaryDraw.width,
         },
         }}>
             <Box>
