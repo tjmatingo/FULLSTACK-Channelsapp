@@ -34,7 +34,7 @@ const PrimaryDraw = () => {
         }}>
             <Box>
                 <Box sx={{position: "absolute", top: 0, right: 0, p: 0, width: open ? "auto" : "100%"}}>
-                    <DrawToggle />
+                    <DrawToggle open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
                     
                     {[...Array(100)].map((_, i) => (
                         <Typography key={i} paragraph>
