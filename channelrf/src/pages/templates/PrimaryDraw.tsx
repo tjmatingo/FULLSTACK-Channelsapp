@@ -1,12 +1,52 @@
-import { Box, Drawer, useMediaQuery,Typography } from "@mui/material";
+import { Box, styled, useMediaQuery,Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import DrawToggle from "../../components/PrimaryDraw/DrawToggle";
+import MuiDrawer from "@mui/material/Drawer"
 
 const PrimaryDraw = () => {
     const [open, setOpen] = useState(true);
     const theme = useTheme();
     const below600 = useMediaQuery("(max-width:599px");
+
+    // to ensure the width is expanded when drawer is opened
+    
+    const openedMixin = () => ({
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.easeInOut,
+        duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflowX: "hidden",
+    });
+
+    
+    // ensure drawer width compressed when drawer closed
+    const closedMixin = () => ({
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.easeInOut,
+        duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflowX: "hidden",
+    width: theme.primaryDraw.closed,
+    });
+
+    // customize the drawer component from MUI and add mixin for changing width of drawer
+
+    const Drawer = styled(MuiDrawer, {})(({ theme, open }) => ({
+        width: theme.primaryDraw.width,
+        whiteSpace: "nowrap",
+        boxSizing: "border-box",
+        ...(open && {
+            ...openedMixin(),
+            "& .MuiDrawer-paper": openedMixin(),
+        }),
+        ...(!open && {
+            ...openedMixin(),
+            "& .MuiDrawer-paper": closedMixin(),
+        }),
+        
+    }));
+
     
     
     useEffect(() => {
