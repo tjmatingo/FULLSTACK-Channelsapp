@@ -12,7 +12,7 @@ const Home = () => {
             <CssBaseline />
             <PrimaryAppBar/>
             <PrimaryDraw></PrimaryDraw>
-            <SecondaryDraw></SecondaryDraw>
+            <SecondaryDraw />
             Home
         </Box>
     )
