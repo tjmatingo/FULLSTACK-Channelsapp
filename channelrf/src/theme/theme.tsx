@@ -12,6 +12,10 @@ declare module "@mui/material/styles" {
             closed: number;
 
         };
+
+        secondaryDraw: {
+            width: number;
+        }
     }
     interface ThemeOptions {
         primaryAppBar: {
@@ -22,6 +26,10 @@ declare module "@mui/material/styles" {
             closed: number;
 
         };
+
+        secondaryDraw: {
+            width: number;
+        }
     }
     
 }
@@ -40,6 +48,10 @@ export const createMuiTheme = () => {
             width: 240,
             closed: 70,
 
+        },
+
+        secondaryDraw: {
+            width: 240,
         },
 
         components:{
