@@ -23,7 +23,7 @@ const PrimaryDraw = () => {
     // ensure drawer width compressed when drawer closed
     const closedMixin = () => ({
     transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.easeInOut,
+        easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
     }),
     overflowX: "hidden",
@@ -41,7 +41,7 @@ const PrimaryDraw = () => {
             "& .MuiDrawer-paper": openedMixin(),
         }),
         ...(!open && {
-            ...openedMixin(),
+            ...closedMixin(),
             "& .MuiDrawer-paper": closedMixin(),
         }),
         
