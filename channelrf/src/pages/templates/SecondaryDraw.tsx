@@ -7,7 +7,12 @@ const SecondaryDraw = () => {
     const theme = useTheme();
     
 
-    axios.get('http://127.0.0.1:8000/api/docs/schema/ui')
+    axios.get('http://127.0.0.1:8000/api/server/select/?category=Cars').then(response => {
+        console.log(response.data);
+    }).catch((error) => {
+        console.log(error);
+        // error because frontend and backend are not on the same port/domain name
+    });
 
     return (
         <Box sx={{
