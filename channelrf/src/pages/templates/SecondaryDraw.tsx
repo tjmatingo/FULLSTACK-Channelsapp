@@ -11,7 +11,7 @@ const SecondaryDraw = () => {
         console.log(response.data);
     }).catch((error) => {
         console.log(error);
-        // error because frontend and backend are not on the same port/domain name
+        // error produced if CORS is not installed due to frontend and backend not on the same port/domain name
     });
 
     return (
