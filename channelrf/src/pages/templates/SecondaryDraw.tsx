@@ -1,9 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme }from "@mui/material";
 
+import axios from "axios";
+
 const SecondaryDraw = () => {
     const theme = useTheme();
     
+
+    axios.get('http://127.0.0.1:8000/api/docs/schema/ui')
+
     return (
         <Box sx={{
             minWidth: `${theme.secondaryDraw.width}px`, 
