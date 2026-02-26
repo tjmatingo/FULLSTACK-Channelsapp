@@ -1,13 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme }from "@mui/material";
 
-import axios from "axios";
+//////
+import useAxiosWithInterceptor from "../../helpers/jwtInterceptor";
+//////
 
 const SecondaryDraw = () => {
     const theme = useTheme();
+    const jwtAxios = useAxiosWithInterceptor();
     
 
-    axios.get('http://127.0.0.1:8000/api/server/select/?category=Cars').then(response => {
+    jwtAxios.get('http://127.0.0.1:8000/api/server/select/?category=Cars').then(response => {
         console.log(response.data);
     }).catch((error) => {
         console.log(error);

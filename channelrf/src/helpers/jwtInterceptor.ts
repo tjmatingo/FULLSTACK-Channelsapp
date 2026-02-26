@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios"
+import axios, { type AxiosInstance } from "axios"
 import { useNavigate } from "react-router-dom"
 import { BASE_URL } from "../config"
 
@@ -24,3 +24,5 @@ const useAxiosWithInterceptor = (): AxiosInstance => {
 
     return jwtAxios;
 }
+
+export default useAxiosWithInterceptor;
