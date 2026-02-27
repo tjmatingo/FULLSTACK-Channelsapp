@@ -30,6 +30,8 @@ const useCrud  = <T>(initialData: T[], apiURL: string): IuseCrud<T> => {
             if (error.response && error.response.status === 400) {
                 setError(new Error("400"))
             }
+            setIsLoading(false)
+            throw error;
         }
     };
     
