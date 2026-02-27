@@ -6,6 +6,7 @@ interface IuseCrud<T> {
     dataCrud: T[];
     fetchData: () => Promise<void>;
     error: Error | null;
+    isLoading: boolean;
 }
 
 
@@ -35,7 +36,7 @@ const useCrud  = <T>(initialData: T[], apiURL: string): IuseCrud<T> => {
         }
     };
     
-    return {fetchData}
+    return {fetchData, dataCrud, error, isLoading}
     
 }
 
