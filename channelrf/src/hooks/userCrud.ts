@@ -5,12 +5,10 @@ const useCrud  = () => {
     const jwtAxios = useAxiosWithInterceptor();
 
     const fetchData = () => {
-        // sending request
+        // sending request using interceptor
     };
     
-    return {
-
-    }
+    return {fetchData}
     
 }
 
