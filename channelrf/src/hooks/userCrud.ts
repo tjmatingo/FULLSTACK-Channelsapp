@@ -20,7 +20,7 @@ const useCrud  = <T>(initialData: T[], apiURL: string): IuseCrud<T> => {
         setIsLoading(true)
         // sending request using interceptor
         try{
-            const response = await jwtAxios.get('${BASE_URL}${apiURL}', {})
+            const response = await jwtAxios.get(`${BASE_URL}${apiURL}`, {})
             const data = response.data
             setDataCrud(data)
             setError(null)
