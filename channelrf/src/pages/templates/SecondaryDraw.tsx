@@ -1,21 +1,21 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme }from "@mui/material";
 
-//////
-import useAxiosWithInterceptor from "../../helpers/jwtInterceptor";
-//////
+// //////
+// import useAxiosWithInterceptor from "../../helpers/jwtInterceptor";
+// //////
 
 const SecondaryDraw = () => {
     const theme = useTheme();
-    const jwtAxios = useAxiosWithInterceptor();
+    // const jwtAxios = useAxiosWithInterceptor();
     
 
-    jwtAxios.get('http://127.0.0.1:8000/api/server/select/?category=Cars').then(response => {
-        console.log(response.data);
-    }).catch((error) => {
-        console.log(error);
-        // error produced if CORS is not installed due to frontend and backend not on the same port/domain name
-    });
+    // jwtAxios.get('http://127.0.0.1:8000/api/server/select/?category=Cars').then(response => {
+    //     console.log(response.data);
+    // }).catch((error) => {
+    //     console.log(error);
+    //     // error produced if CORS is not installed due to frontend and backend not on the same port/domain name
+    // });
 
     return (
         <Box sx={{
