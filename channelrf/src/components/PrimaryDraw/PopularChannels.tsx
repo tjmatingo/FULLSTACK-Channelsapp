@@ -17,7 +17,7 @@ const PopularChannels: React.FC<Props> = ({ open }) => {
     <>
         <Box sx={{ height: 50, p: 2, display: "flex", alignItems: "center", flex: "1 1 100%", backgroundColor: "blue"}}>
             <Typography sx={{display: open ? "black" : "none"}}>
-                Man UTD
+                Popular
             </Typography>
 
         </Box>
