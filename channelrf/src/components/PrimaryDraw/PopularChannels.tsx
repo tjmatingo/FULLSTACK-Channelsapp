@@ -7,11 +7,16 @@ import { MEDIA_URL } from "../../config";
 import { Link } from "react-router-dom";
 
 
-const PopularChannels = () => {
+type Props = {
+    open: boolean;
+};
+
+
+const PopularChannels: React.FC<Props> = ({ open }) => {
     return (
     <>
         <Box sx={{ height: 50, p: 2, display: "flex", alignItems: "center", flex: "1 1 100%", backgroundColor: "blue"}}>
-            <Typography sx={{}}>
+            <Typography sx={{display: open ? "black" : "none"}}>
                 Man UTD
             </Typography>
 
