@@ -86,16 +86,14 @@ const PrimaryDraw: React.FC<Props> = ({children}) => {
         }}>
             <Box>
                 <Box sx={{position: "absolute", top: 0, right: 0, p: 0, width: open ? "auto" : "100%"}}>
-                    <DrawToggle open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
-                    
-                    {React.Children.map(children, (child) => {
-                        return React.isValidElement(child)
-                        ? React.cloneElement(child as ChildElement, {open})
-                        : child;
-                    })}
-
-                    
+                    <DrawToggle open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />                    
                 </Box>
+
+                {React.Children.map(children, (child) => {
+                    return React.isValidElement(child)
+                    ? React.cloneElement(child as ChildElement, {open})
+                    : child;
+                })}
 
             </Box>
         </Drawer>

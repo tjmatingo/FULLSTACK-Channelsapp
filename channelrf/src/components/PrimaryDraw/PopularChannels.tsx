@@ -11,6 +11,9 @@ const PopularChannels = () => {
     return (
     <>
         <Box sx={{ height: 50, p: 2, display: "flex", alignItems: "center", flex: "1 1 100%", backgroundColor: "blue"}}>
+            <Typography sx={{}}>
+                Man UTD
+            </Typography>
 
         </Box>
     </>);
