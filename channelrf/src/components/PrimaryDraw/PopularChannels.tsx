@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 
 
 const PopularChannel = () => {
-    return ();
+    return (
+        
+    );
 };
 
 
