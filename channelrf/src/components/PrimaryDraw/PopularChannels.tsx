@@ -7,11 +7,9 @@ import { MEDIA_URL } from "../../config";
 import { Link } from "react-router-dom";
 
 
-const PopularChannel = () => {
-    return (
-        
-    );
+const PopularChannels = () => {
+    return <>Popoular CHannels</>;
 };
 
 
-export default PopularChannel;
+export default PopularChannels;
