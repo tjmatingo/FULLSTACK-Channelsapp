@@ -6,6 +6,13 @@ import Avatar from "@mui/material/Avatar";
 import { MEDIA_URL } from "../../config";
 import { Link } from "react-router-dom";
 
+interface Server {
+    id: number;
+    name: string;
+    category: string;
+    icon: string;
+};
+
 
 type Props = {
     open: boolean;
