@@ -52,6 +52,9 @@ class Server(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='server_category')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='server_owner')
     member = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    banner = models.ImageField(upload_to=serverBannerUploadPath, null=True, blank=True, validators=[validate_image_file_extension])
+    icon = models.ImageField(upload_to=serverIconUploadPath, null=True, blank=True, validators=[validate_icon_image_size, validate_image_file_extension])
+
 
     def __str__(self):
         return f"{self.name} - {self.id}"
@@ -62,10 +65,7 @@ class Channel(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='channel_owner')
     server = models.ForeignKey(Server, on_delete=models.CASCADE, related_name='channel_server')
     topic = models.CharField(max_length=100)
-    banner = models.ImageField(upload_to=serverBannerUploadPath, null=True, blank=True, validators=[validate_image_file_extension])
-    icon = models.ImageField(upload_to=serverIconUploadPath, null=True, blank=True, validators=[validate_icon_image_size, validate_image_file_extension
-                                                                                                ])
-
+                                                                                                
 
     def save(self, *args, **kwargs):
         # checking if the id exists
