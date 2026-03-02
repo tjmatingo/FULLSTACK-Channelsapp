@@ -13,5 +13,5 @@ def validate_image_file_extension(value):
 
     valid_extensions = [".jpeg", ".jpg", ".png", ".gif"]
 
-    if not ext.lowwer() in valid_extensions:
+    if not ext.lower() in valid_extensions:
         raise ValidationError("Unsupported file extension.")

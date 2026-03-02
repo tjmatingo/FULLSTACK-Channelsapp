@@ -55,6 +55,30 @@ class Server(models.Model):
     banner = models.ImageField(upload_to=serverBannerUploadPath, null=True, blank=True, validators=[validate_image_file_extension])
     icon = models.ImageField(upload_to=serverIconUploadPath, null=True, blank=True, validators=[validate_icon_image_size, validate_image_file_extension])
 
+    def save(self, *args, **kwargs):
+        # checking if the id exists
+        if self.id:
+            existing = get_object_or_404(Server, id=self.id)
+
+            # if icon is changed the old one must be deleted
+            if existing.icon != self.icon:
+                existing.icon.delete(save=False)
+            # if icon is changed the old one must be deleted
+            if existing.banner != self.banner:
+                existing.banner.delete(save=False)
+        super(Server, self).save(*args, **kwargs)
+    
+    # if channel is deleted icon must be deleted as well
+    @receiver(models.signals.pre_delete, sender="server.Server")
+    def server_delete_files(sender, instance, **kwargs):        
+        for field in instance._meta.fields:
+            if field.name == "icon" or field.name == "banner":
+                file = getattr(instance, field.name)
+                if file:
+                    file.delete(save=False)
+
+
+
 
     def __str__(self):
         return f"{self.name} - {self.id}"
@@ -66,29 +90,6 @@ class Channel(models.Model):
     server = models.ForeignKey(Server, on_delete=models.CASCADE, related_name='channel_server')
     topic = models.CharField(max_length=100)
                                                                                                 
-
-    def save(self, *args, **kwargs):
-        # checking if the id exists
-        if self.id:
-            existing = get_object_or_404(Channel, id=self.id)
-
-            # if icon is changed the old one must be deleted
-            if existing.icon != self.icon:
-                existing.icon.delete(save=False)
-            # if icon is changed the old one must be deleted
-            if existing.banner != self.banner:
-                existing.banner.delete(save=False)
-        super(Channel, self).save(*args, **kwargs)
-    
-    # if channel is deleted icon must be deleted as well
-    @receiver(models.signals.pre_delete, sender="server.Server")
-    def category_delete_files(sender, instance, **kwargs):        
-        for field in instance._meta.fields:
-            if field.name == "icon" or field.name == "banner":
-                file = getattr(instance, field.name)
-                if file:
-                    file.delete(save=False)
-
 
 
     def __str__(self):
