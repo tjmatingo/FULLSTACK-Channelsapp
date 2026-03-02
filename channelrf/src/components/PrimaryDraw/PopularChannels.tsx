@@ -52,7 +52,7 @@ const PopularChannels: React.FC<Props> = ({ open }) => {
                                     <Typography 
                                         varient="body2" 
                                         sx={{
-                                            fontWeight:400, 
+                                            fontWeight:700, 
                                             lineHeight:1.2, 
                                             textOverflow:"ellipsis", 
                                             overflow:"hidden", 
