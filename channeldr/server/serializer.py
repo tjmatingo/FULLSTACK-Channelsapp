@@ -14,6 +14,7 @@ class ChannelSerializer(serializers.ModelSerializer):
 class ServerSerializer(serializers.ModelSerializer):
     num_members = serializers.SerializerMethodField()
     channel_server = ChannelSerializer(many=True)
+    category = serializers.StringRelatedField()
     
     # selecting server db table and excluding the member field
     class Meta:
