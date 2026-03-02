@@ -35,8 +35,17 @@ const PopularChannels: React.FC<Props> = ({ open }) => {
             <Typography sx={{display: open ? "black" : "none"}}>
                 Popular
             </Typography>
-
         </Box>
+
+        <List>
+            {dataCrud.map((item) => (
+                <ListItem key={item.id} disablePadding sx={{display: "block"}} dense={true}>
+                    <Link to={`/server/${item.id}`} style={{ textDecoration: "none", color: "inherit"}}>
+                        {item.name}
+                    </Link>
+                </ListItem>
+            ))}
+        </List>
     </>);
 };
 
