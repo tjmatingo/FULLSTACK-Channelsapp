@@ -28,9 +28,6 @@ const PopularChannels: React.FC<Props> = ({ open }) => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        console.log(dataCrud);
-    }, [dataCrud]);
     
     return (
     <>
