@@ -37,7 +37,7 @@ const ExploreCategories = () => {
             position: "sticky", top: 0, 
             backgroundColor: theme.palette.background.default,
         }}>
-
+            Explore Page``
         </Box>
         </>
     );
