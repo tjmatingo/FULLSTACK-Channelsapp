@@ -34,10 +34,11 @@ const ExploreCategories = () => {
             alignItems: "center", 
             px: 2, 
             borderBottom: `1px solid ${theme.palette.divider}`, 
-            position: "sticky", top: 0, 
+            position: "sticky", 
+            top: 0, 
             backgroundColor: theme.palette.background.default,
         }}>
-            Explore Page``
+            Explore Page
         </Box>
         </>
     );
