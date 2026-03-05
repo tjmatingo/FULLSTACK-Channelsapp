@@ -7,13 +7,13 @@ import { MEDIA_URL } from "../../config";
 
 
 interface Category {
-    
+    id
 }
 
 const ExploreCategories = () => {
     const {dataCrud, error, isLoading, fetchData } = useCrud<Category>(
         [],
-        "/server/select/"
+        "/server/category/"
     );
     
     return ( 
