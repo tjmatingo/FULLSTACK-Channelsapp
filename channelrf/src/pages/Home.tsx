@@ -15,7 +15,7 @@ const Home = () => {
             <CssBaseline />
             <PrimaryAppBar/>
             <PrimaryDraw>
-            <PopularChannels/>
+            <PopularChannels open={false} />
             </PrimaryDraw>
             <SecondaryDraw>
                 <ExploreCategories />

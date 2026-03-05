@@ -1,12 +1,19 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useTheme }from "@mui/material";
 
 // //////
 // import useAxiosWithInterceptor from "../../helpers/jwtInterceptor";
 // //////
 
-const SecondaryDraw = () => {
+
+type SecondaryDrawProps = {
+    children: React.ReactNode;
+};
+
+const SecondaryDraw = ({children}: SecondaryDrawProps) => {
     const theme = useTheme();
+
+
     // const jwtAxios = useAxiosWithInterceptor();
     
 
@@ -17,6 +24,8 @@ const SecondaryDraw = () => {
     //     // error produced if CORS is not installed due to frontend and backend not on the same port/domain name
     // });
 
+
+    
     return (
         <Box sx={{
             minWidth: `${theme.secondaryDraw.width}px`, 
@@ -27,13 +36,7 @@ const SecondaryDraw = () => {
             overflow: "auto",
         }}>
 
-        
-            {[...Array(100)].map((_, i) => (
-                <Typography key={i} paragraph>
-                    {i + 1}
-                </Typography>
-            ))}
-
+        {children}
         </Box>
     );
 };
