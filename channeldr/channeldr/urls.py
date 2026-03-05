@@ -2,13 +2,14 @@ from django.contrib import admin
 from django.urls import path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.routers import DefaultRouter
-from server.views import ServerListViewSet
+from server.views import ServerListViewSet, CategoryListViewSet
 from django.conf.urls.static import static
 from django.conf import settings 
 
 # endpoint setup
 router = DefaultRouter()
 router.register("api/server/select", ServerListViewSet)
+router.register("api/server/category", CategoryListViewSet)
 
 
 urlpatterns = [

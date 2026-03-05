@@ -6,7 +6,16 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { MEDIA_URL } from "../../config";
 
 
+interface Category {
+    
+}
+
 const ExploreCategories = () => {
+    const {dataCrud, error, isLoading, fetchData } = useCrud<Category>(
+        [],
+        "/server/select/"
+    );
+    
     return ( 
         <>
         </>
