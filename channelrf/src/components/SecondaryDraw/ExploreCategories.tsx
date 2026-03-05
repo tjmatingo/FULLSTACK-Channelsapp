@@ -7,7 +7,10 @@ import { MEDIA_URL } from "../../config";
 
 
 interface Category {
-    id
+    id: number;
+    name: string;
+    description: string;
+    icon: string;
 }
 
 const ExploreCategories = () => {
