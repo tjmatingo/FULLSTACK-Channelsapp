@@ -8,12 +8,14 @@ from django.db.models import Count
 from .schema import server_list_docs
 from .models import Server, Category
 from .serializer import ServerSerializer, CategorySerializer
+from drf_spectacular.utils import extend_schema 
 
 # endpoint setup
 # category viewset
 class CategoryListViewSet(viewsets.ViewSet):
     queryset = Category.objects.all()
 
+    @extend_schema(responses=CategorySerializer)
     def list(self, request):
         serializer = CategorySerializer(self.queryset, many=True)
         return Response(serializer.data)
