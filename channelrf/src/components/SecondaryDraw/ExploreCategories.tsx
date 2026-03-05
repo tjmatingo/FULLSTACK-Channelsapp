@@ -18,6 +18,10 @@ const ExploreCategories = () => {
         [],
         "/server/category/"
     );
+
+    useEffect (() => {
+        fetchData();
+    }, []);
     
     return ( 
         <>
