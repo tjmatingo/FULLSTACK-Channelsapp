@@ -40,6 +40,25 @@ const ExploreCategories = () => {
         }}>
             Explore Page
         </Box>
+        
+        <List sx={{py: 0 }}>
+            {dataCrud.map((item) => (
+                <ListItem disablePadding key={item.id} sx={{display: "block"}} dense={true} >
+                    <Link to={`/explore/${item.name}`} style={{textDecoration:"none", color:"inherit"}}>
+                        <ListItemButton sx={{minHeight: 48}}>
+                            <ListItemIcon sx={{minWidth: "0px", justifyContent: "center"}}>
+                                <ListItemAvatar sx={{minWidth: "0px"}}>
+                                    <img alt="server icon" src={`${MEDIA_URL}${item.icon}`} style={{width: "25px", height: "25px", display: "block", margin: "auto"}} />
+                                </ListItemAvatar>
+                            </ListItemIcon>
+                            <ListItemText primary={<Typography variant="body1" textAlign="start" paddingLeft={1}>{item.name} </Typography>}></ListItemText>
+                        </ListItemButton>
+                    </Link>
+                </ListItem>
+            ))}
+
+        </List>
+
         </>
     );
 };
