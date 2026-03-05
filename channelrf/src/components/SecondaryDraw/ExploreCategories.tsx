@@ -29,7 +29,13 @@ const ExploreCategories = () => {
     return ( 
         <>
         <Box sx={{
-            height: "50px", display: "flex", alignItems: "center", px: 2, borderBottom: `1px solid ${theme.palette.divider}`
+            height: "50px",
+            display: "flex", 
+            alignItems: "center", 
+            px: 2, 
+            borderBottom: `1px solid ${theme.palette.divider}`, 
+            position: "sticky", top: 0, 
+            backgroundColor: theme.palette.background.default,
         }}>
 
         </Box>
