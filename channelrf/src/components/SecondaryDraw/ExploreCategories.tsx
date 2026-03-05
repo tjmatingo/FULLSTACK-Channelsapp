@@ -6,6 +6,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { MEDIA_URL } from "../../config";
 
 
+
 interface Category {
     id: number;
     name: string;
@@ -14,6 +15,8 @@ interface Category {
 }
 
 const ExploreCategories = () => {
+    const theme = useTheme();
+    
     const {dataCrud, error, isLoading, fetchData } = useCrud<Category>(
         [],
         "/server/category/"
@@ -25,6 +28,11 @@ const ExploreCategories = () => {
     
     return ( 
         <>
+        <Box sx={{
+            height: "50px", display: "flex", alignItems: "center", px: 2, borderBottom: `1px solid ${theme.palette.divider}`
+        }}>
+
+        </Box>
         </>
     );
 };
