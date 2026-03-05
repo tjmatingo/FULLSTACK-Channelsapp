@@ -17,6 +17,38 @@ class CategoryListViewSet(viewsets.ViewSet):
 
     @extend_schema(responses=CategorySerializer)
     def list(self, request):
+        '''
+        # I am going to add dark mode function
+        # use of django channels and build chat function with multiple users 
+        # enabling multiple users in chat
+        # dynamic channel selection
+        # message inputs and outputs 
+        # implementing websockets and routing
+        
+            //////////////////////////////////////////////////////////////
+
+
+        # authentication implementation
+        # login form creation
+        # installing jwt
+        # protection of api endpoints 
+        # implementing protected routes 
+        # websocket auth
+        # customizing jwt http only auth
+        # jwtauth class customisation
+        # websocket refresh tockens
+        # refactoring usechatservices custom hook
+        #  incorp custom hooks to allow access to router
+        # removing http only cookies on logout
+        # login handling
+        # registration form
+
+        /////////////////////
+        
+        # creating server  membership system 
+        # membership chat restrictions
+        '''
+        
         serializer = CategorySerializer(self.queryset, many=True)
         return Response(serializer.data)
 

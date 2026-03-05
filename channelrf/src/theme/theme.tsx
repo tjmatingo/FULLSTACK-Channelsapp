@@ -37,9 +37,14 @@ declare module "@mui/material/styles" {
 export const createMuiTheme = () => {
     let theme = createTheme({
         typography: {
-            fontFamily: ["Quintessential", "sans-serif"].join(","),
+            fontFamily: ["Bitcount Prop Double Ink", "system-ui"].join(","),
+            body1: {
+                fontWeight: 500,
+                letterSpacing: "-0.5px",
+            },
         },
-        
+
+
         primaryAppBar: {
             height: 50,
         },
