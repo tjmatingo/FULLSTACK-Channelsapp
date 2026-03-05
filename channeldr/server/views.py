@@ -6,10 +6,20 @@ from rest_framework.permissions import IsAuthenticated
 from django.db.models import Count
 
 from .schema import server_list_docs
-from .models import Server
-from .serializer import ServerSerializer
+from .models import Server, Category
+from .serializer import ServerSerializer, CategorySerializer
 
 # endpoint setup
+# category viewset
+class CategoryListViewSet(viewsets.ViewSet):
+    queryset = Category.objects.all()
+
+    def list(self, request):
+        serializer = CategorySerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+
+# server viewset 
 class ServerListViewSet(viewsets.ViewSet):
     queryset = Server.objects.all()
     # permission_classes = [IsAuthenticated]
